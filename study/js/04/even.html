@@ -10,5 +10,19 @@
 <body>
 	<h1>짝수끼리 더하기</h1>
 
+	<script>
+		var n = 10;
+		var sum = 0;
+
+		for (var i = 1; i <= n; i++) { // i <= 10 까지 반복.
+			if (i%2==1) {
+				continue; // i가 홀수일 경우 continue 문 실행 - 반복문 스킵
+			}
+			
+			// i가 짝수일 경우 실행될 내용.
+			sum += i;
+			document.write(i + "------" + sum + "<br>");
+		}
+	</script>
 </body>
 </html>

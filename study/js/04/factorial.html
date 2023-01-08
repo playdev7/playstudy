@@ -8,6 +8,18 @@
 	<link rel="stylesheet" href="css/factorial.css">
 </head>
 <body>
+	<script>
+		var n = prompt("숫자를 입력하세요."); // 몇까지 계승할지.
+		var nFact = 1; // 팩토리얼 결과 값. - 1을 기본값으로 초기화
+		var i = 2; // 반복문에 사용할 카운터 변수. - 1!은 1이므로 2부터 시작.
 
+		while(i<=n) {
+			nFact *= i;
+			i++;
+		}
+
+		document.write(n + "!" + "=" + nFact);
+
+	</script>
 </body>
 </html>
