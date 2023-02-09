@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>To do list</title>
+	<link rel="stylesheet" href="./css/input.css">
+	<link rel="stylesheet" href="./css/list.css">
+</head>
+<body>
+	<div id="wrapper"></div>	
+		<h2>여행 준비물 점검 목록</h2>
+		<form>
+				<input type="text" id="item" autufoucs="true">
+				<!-- textField 추가. 자동완성 활성화.-->
+				<button type="button" id="add" class="addBtn">추가</button>
+				<!-- addBtn 클래스명을 가진 버튼 추가. id 값은 Form Handler 통해 전달되고 처리됨. -->
+		</form>
+		<div id="itemList">	</div>	
+	</div>    
+
+	<script src="./js/checklist.js">
+	</script>
+</body>
+</html>

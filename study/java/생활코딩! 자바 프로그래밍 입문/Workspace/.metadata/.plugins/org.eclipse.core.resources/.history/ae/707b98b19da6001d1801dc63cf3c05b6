@@ -1,0 +1,13 @@
+
+public class Casting {
+	public static void main(String[] args) {
+		double a = 1.1;
+		double b = 1;	// 실수 1.0 으로 캐스팅(변환) 됨
+		// 형변환과 캐스팅은 엄연히 그 의미가 다르다.
+		// Eclipse Tip - 문법 오류 발생 시 좌측 전구 hover 하면 오류 확인 가능
+		// int c = 1.1; -> int 로 형 변환 불가하다는 Type Mismatch 오류 발생.
+		
+		
+		System.out.println(b);
+	}
+}
