@@ -1,0 +1,7 @@
+Oracle JDK는 라이선스 문제 발생할 수 있다.
+	오픈 JDK인 ZULU를 설치한다.
+
+스프링 개발 시 STS를 사용한다.
+	이유: 이클립스 마켓플레이스에서 Spring 설치 실패할 수 있어서
+
+Spring Legacy Project - MVC 개발 시 STS3 에서 진행하는 것을 권장한다.

@@ -1,0 +1,26 @@
+/* USER 테이블 생성 */
+CREATE TABLE USERS (
+	ID VARCHAR2(8) PRIMARY KEY,	-- ID 튜플 생성 및 기본키로 지목.
+	PASSWORD VARCHAR2(8),		-- PW 튜플 생성
+	NAME VARCHAR2(20), ROLE VARCHAR2(5)	-- NAME, ROLE 튜플 생성
+);
+
+/* USER 테이블에 대한 각 튜플에 필드 입력 */
+INSERT INTO USERS VALUES('test', 'test123', '관리자', 'Admin');
+INSERT INTO USERS VALUES('user1', 'user1', '홍길동', 'User');
+/* 각 튜플에 대해 순서대로 필드 입력. */
+
+
+/* BOARD 테이블 생성*/
+CREATE TABLE BOARD (
+	SEQ NUMBER(5) PRIMARY KEY,	-- SEQ 튜플 생성 및 기본키로 지목.
+	TITLE VARCHAR2(200),
+	WRITER VARCHAR2(20),
+	CONTENT VARCHAR2(2000),
+	REGDATE DATE DEFAULT NOW(),	-- REGDATE 튜플 생성 및 기본값 현재 시스템날짜로 설정.
+	CNT NUMBER(5) DEFAULT 0		-- CNT 튜플 생성 및 기본값 0으로 설정.
+);
+
+/* BOARD 테이블에 대한 각 튜플에 필드 입력 */
+INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT) VALUES(1, '가입인사', '관리자', '잘 부탁드립니다!');
+/* SEQ, TITLE, WRITER, CONTENT 튜플 지목. 지목된 순서대로 필드 입력 */

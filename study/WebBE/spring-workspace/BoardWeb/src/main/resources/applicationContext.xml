@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 설정파일의 루트 엘리먼트는 무조건 beans 여야 한다. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- import 문 -->
+	<!-- Spring 설정 파일을 기능별로 나누어서 작성하고, 여기에 import. -->
+	<!-- datasource 관련 설정 파일은
+		<import resource="context-datasource.xml">
+		트랜잭션 관련 설정 파일은
+		<import resource="context-transaction.xml">
+		 -->
+
+	 
+	<!-- BeanFactory 디자인 패턴 객체가 없어도 Spring FrameWork에서 제공하는 기능.
+	다른 소스 코드 수정 필요 없이 xml 파일의 <bean> 부분만 수정해주면 됨.
+	유지보수에 매우 용이함. -->
+	
+	<!-- beans 의 참조 속성은 id 와 name 이 있음.
+	Java 식별자 규칙에 따라 id 값은 무조건 camelCase 적용. - 숫자로 시작, 공백,특수문자 포함 불가.
+	name 값을 사용하면 특수문자 사용 가능.
+	name, id 공통으로 "전체 스프링 파일 내에서 유일한 값"을 가져야 함.
+	-->
+	<bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="singleton"/>
+	<!-- class는 정확한 패키지명, 클래스명 명시해야 하므로 자동완성(코드스니펫) 활용. -->
+	
+	<!-- bean 요소 주요 속성 정리
+		1. init-method 속성으로 객체 생성 이후 멤버변수 초기화 가능. - 초기화 메소드명을 값으로 표기. 
+		2. destroy-method 속성으로 객체 삭제 전 임의의 메소드를 호출시킬 수 있음. - 호출 할 메소드 명을 값으로 표기.
+		3. lazy-init 속성으로 비동기 프로그래밍을 할 수 있다.
+			lazy-init="true" 일 경우에, 클라이언트에서 호출 시에만 객체를 생성한다. (메모리에 적재시킨다.)
+			기본 값은 false. pre-loading 방식. 프로그램 실행 시 포함된 모든 객체를 생성시키고 메모리에 적재시킨다.
+		4. scope 속성 및 싱글톤
+				- 메모리에 객체 하나만 유지해서 공유하려면, 인스턴스를 도미노처럼 쌓아야된다. 실제 코드는 훨씬 복잡하기에, 도미노를 쌓는 것은 불가능에 가깝다.
+				- ex) 도미노처럼 스케줄링까지 고려해서.. tv에서 쓰고 종료되고, tv1 인스턴스에서 쓰고 종료되고.. 스왑해주고...
+			따라서 scope 속성으로 어느 범위에서 사용할 수 있는지를 지정할 수 있다.
+			scope="singleton" 시 스프링 컨테이너에 의해 단 하나만 생성되어서 운용되도록 한다.
+			singleton 이 default 값이고, 속성을 명시하지 않아도 적용된다.
+				=> 클라이언트에서 리퀘스트 엄청 줘도 정의된 인스턴스 하나만 생성된다.
+				
+		4-1. 만약 scope="prototype" 이면 요청 들어올 때 마다 인스턴스 생성해서 사용한다.
+			메모리 점유율이... 높아진다.
+	--> 
+	
+</beans>
