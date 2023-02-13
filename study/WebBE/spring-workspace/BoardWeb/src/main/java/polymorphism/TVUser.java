@@ -16,7 +16,8 @@ public class TVUser {
 	public static void main(String[] args) {
 		// 1. Spring 컨테이너를 구동한다.
 		AbstractApplicationContext factory =
-				new GenericXmlApplicationContext("applicationContext.xml");
+				new GenericXmlApplicationContext("applicationContext-poly.xml");
+				// factory 인스턴스 생성 시 new GenericXmlApplicationContext("설정 파일 이름.xml") 로 지정.
 		
 		// 2. Spring 컨테이너로부터 필요한 객체를 요청(Lookup) 한다.
 		TV tv = (TV)factory.getBean("tv");
