@@ -1,0 +1,11 @@
+DB 엔진
+Oracle DB
+MYSQL
+MSSQL
+
+편집도구
+DBeaver - 범용 DB 편집 프로그램.
+	** ER-D 다이어그램 생성 가능
+SQL Developer - Oracle DB 편집 프로그램.
+
+
