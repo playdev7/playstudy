@@ -1,2 +1,0 @@
-SELECT * FROM BOARD;	-- BOARD 테이블 출력
-SELECT * FROM USERS;	-- USERS 테이블 출력
