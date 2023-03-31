@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author Volt
+ *
+ */
+module org.opentutorials.iot {
+	requires java.base;
+}

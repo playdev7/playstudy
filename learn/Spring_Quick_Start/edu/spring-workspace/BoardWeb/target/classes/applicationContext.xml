@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- CollectionBean 관련 설정 파일. -->
+
+<!-- 설정파일의 루트 엘리먼트는 무조건 beans 여야 한다. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="collectionBean"
+		class="com.springbook.ioc.injection.CollectionBean">
+		<property name="addressList">
+			<!-- props 를 통해 키와 값을 지정할 수 있다.
+				<prop key="키 값">하위 값</prop> -->
+			<props>
+				<prop key="고길동">서울시 강남구 역삼동</prop>
+				<prop key="마이콜">서울시 강서구 화곡동</prop>
+			</props>
+			
+			<!--  Map 문법 예시
+				<map>
+					<entry>
+						<key><value>고길동</value></key>
+						<value>서울시 강남구 역삼동</value>
+					</entry>
+					<entry>
+						<key><value>마이콜</value></key>
+						<value>서울시 강서구 화곡동</value>
+					</entry>
+				</map>
+				
+			-->
+		</property>
+	</bean>
+</beans>

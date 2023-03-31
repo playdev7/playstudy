@@ -1,0 +1,25 @@
+// awt 패키지 import 오류 발생
+// java 9 부터는 모듈 시스템 도입되어 패키지 import 시 모듈화 필요.
+
+// 또는 Java SE 1.8 로 변경.
+
+package org.opentutorials.iot;
+
+import java.awt.Color;
+
+public class ColorDimmingLights extends DimmingLights {
+
+	double _bright = 0;
+	Color _color;
+	
+	public ColorDimmingLights(String id) {
+		super(id);
+		this._color = Color.white;
+	}
+	
+	public void setColor(Color color) {
+		this._color = color;
+		System.out.println(this._id + " -> ColorDimmingLights color : "+color);
+	}
+
+}

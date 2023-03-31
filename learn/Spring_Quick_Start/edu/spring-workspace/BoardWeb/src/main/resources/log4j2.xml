@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 실습하면서 log4j 이용할 수 있도록 문서 편집 -->
+<!-- log4j == 프로그래밍 중 프로그램 로그를 기록해주는 도구
+	다양한 태그와 속성으로 설정 정의 가능. -->
+<!-- 현재 log4j 속성 => 프로그램 실행 시 콘솔에 디버깅 수준까지의 메세지 내용 표시. -->
+<Configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5p: %c - %m%n" />
+		</Console>
+	</Appenders>
+	
+	<!-- Loggers -->
+	<Loggers>
+		<logger name="org.springframework" level="DEBUG" additivity="false">
+			<AppenderRef ref="console" />
+		</logger>
+	</Loggers>	
+</Configuration>

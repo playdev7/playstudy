@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- polymorphism 관련 설정 파일 -->
+
+<!-- 설정파일의 루트 엘리먼트는 무조건 beans 여야 한다. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	
+	<!-- 컴포넌트 스캔 설정.
+	base-package 에 포함된 모든 클래스를 스캔
+	이후 @component 가 기재된 클래스의 객체를 모두 생성함.
+		만약에 레벨이 나뉘어진 패키지라면 하위 레벨의 패키지 모두 스캔대상이 됨.
+		com.springbook.biz == com.springbook.biz.* 전부 스캔.
+	-->
+	<context:component-scan base-package="polymorphism"></context:component-scan>
+	<!-- 어노테이션과 XML 설정 병행 예시
+		클라이언트 클래스에 @Component 명시. 멤버변수 상단에 @Autowired로,
+		설정 파일에서 메모리에 할당시킬 객체는 xml에서 bean으로 정의.
+		아래 bean을 Autowired 해줄 것임.
+	 -->
+	<bean class="polymorphism.SonySpeaker"></bean>
+	<!-- p 네임스페이스 폴딩
+		p 네임스페이스를 이용하면 setter 인젝션을 편하게 할 수 있다.
+		[Namespaces] 탭에서 체크 한 번으로 추가 시킬 수 있다.
+	-->
+
+	<!-- import 문 폴딩
+		Spring 설정 파일을 기능별로 나누어서 작성하고, import 시켜 활용할 수 있다.
+		 ex. datasource 관련 설정 파일은 <import resource="context-datasource.xml">
+		트랜잭션 관련 설정 파일은 <import resource="context-transaction.xml">
+	-->
+	 
+	<!-- Spring FrameWork 이점 폴딩
+		1. 제어의 역행 - 컨테이너가 객체를 생성하고 운용한다.
+		2. 참조하고 있는 다른 클래스의 소스코드 수정 할 필요 없이 <bean> 만 수정하면 된다.
+		3. 디자인 패턴을 효율적으로 활용할 수 있어 유지보수에 용이하다.
+	 -->
+	
+	<!-- bean 의 참조 속성 폴딩
+		1. bean 의 참조 속성으로 id 와 name 이 있음.
+			Java 식별자 규칙에 따라 id 값은 무조건 camelCase 적용. - 숫자로 시작, 공백,특수문자 포함 불가.
+			name 값을 사용하면 특수문자 사용 가능.
+			name, id 공통으로 "전체 스프링 파일 내에서 유일한 값"을 가져야 함.
+	-->
+	
+	<!-- p 네임스페이스 통한 setter 인젝션
+		p 네임스페이스 활용하여 setter 속성 부여
+		p:변수명-ref="참조할 객체의 이름이나 아이디 "
+		p:변수명="기본형 값"
+	 -->
+	
+	<!-- p 엘리먼트 사용한 소스코드 폴딩
+		<bean id="tv" class="polymorphism.SamsungTV" p:speaker-ref="sony" p:price="2700000" init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="singleton"> 	
+	 --> 
+	 
+	 
+	 <!-- setter 인젝션 사용한 소스코드 폴딩
+		 	==> setter 설정은 <property> 요소를 사용한다.
+			<property name="speaker" ref="sony"></property>
+			<property name="price" value="2700000"></property>
+			-->
+	<!-- 생성자 설정 예시 폴딩
+					1. 생성자 관련 아규먼츠 추가. 
+						<constructor-arg index="0" ref="apple"></constructor-arg>
+						<constructor-arg index="1" value="2700000"></constructor-arg>
+					1-1. 다른 객체를 참조할 경우 ref 속성 사용.
+							- ref 값을 참조할 객체의 id 또는 name 값으로 설정.
+					1-2. 기본 자료형 값을 전달할 때에는 value 값만 지정. 
+						  지금처럼 생성자가 여러 개 오버로딩 될 경우.
+						index 속성 및 값으로 아규먼츠 입력 순서를 명확하게 지정한다.
+						(대부분 그렇듯이) index는 0 부터 시작한다.
+	-->
+	
+
+	
+	<!-- class는 정확한 패키지명, 클래스명 명시해야 하므로 자동완성(코드스니펫) 활용. -->
+	
+	<!-- 2. 생성자 추가를 위한 스프링 설정 추가 - id 및 실제 클래스 지정.
+		constructor-arg 의 ref 속성에서 참조하게 됨.
+	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
+	<bean id="apple" class="polymorphism.AppleSpeaker"></bean>
+	 --> 
+	<!-- bean 요소 주요 속성 정리 폴딩
+		1. init-method 속성으로 객체 생성 이후 멤버변수 초기화 가능. - 초기화 메소드명을 값으로 표기. 
+		2. destroy-method 속성으로 객체 삭제 전 임의의 메소드를 호출시킬 수 있음. - 호출 할 메소드 명을 값으로 표기.
+		3. lazy-init 속성으로 비동기 프로그래밍을 할 수 있다.
+			lazy-init="true" 일 경우에, 클라이언트에서 호출 시에만 객체를 생성한다. (메모리에 적재시킨다.)
+			기본 값은 false. pre-loading 방식. 프로그램 실행 시 포함된 모든 객체를 생성시키고 메모리에 적재시킨다.
+		4. scope 속성 및 싱글톤
+				- 메모리에 객체 하나만 유지해서 공유하려면, 인스턴스를 도미노처럼 쌓아야된다. 실제 코드는 훨씬 복잡하기에, 도미노를 쌓는 것은 불가능에 가깝다.
+				- ex) 도미노처럼 스케줄링까지 고려해서.. tv에서 쓰고 종료되고, tv1 인스턴스에서 쓰고 종료되고.. 스왑해주고...
+			따라서 scope 속성으로 어느 범위에서 사용할 수 있는지를 지정할 수 있다.
+			scope="singleton" 시 스프링 컨테이너에 의해 단 하나만 생성되어서 운용되도록 한다.
+			singleton 이 default 값이고, 속성을 명시하지 않아도 적용된다.
+				=> 클라이언트에서 리퀘스트 엄청 줘도 정의된 인스턴스 하나만 생성된다.
+				
+		4-1. 만약 scope="prototype" 이면 요청 들어올 때 마다 인스턴스 생성해서 사용한다.
+			메모리 점유율이... 높아진다.
+	--> 
+	
+</beans>
