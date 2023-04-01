@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Vue Instance Lifecycle</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js!'
+        },
+        // 객체 생성 이전
+        beforeCreate: function() {
+          console.log("beforeCreate");
+        },
+        // 객체 생성 시작
+        created: function() {
+          console.log("created");
+        },
+        // 객체의 메소드가 실제 #app 에 반영되어 렌더링
+        mounted: function() {
+          console.log("mounted");
+          // update 상태 유도 - 메세지 값 변경
+          this.message = "Hello Vue!";
+        },
+        // 객체 초기화를 기준으로 화면 재 렌더링 발생 시에만 update 상태로 가게됨.
+         updated: function() {
+          console.log("updated");
+        }
+      });
+    </script>
+  </body>
+</html>
