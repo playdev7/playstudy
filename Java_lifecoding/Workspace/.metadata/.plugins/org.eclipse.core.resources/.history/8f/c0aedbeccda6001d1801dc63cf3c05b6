@@ -1,0 +1,6 @@
+module org.opentutorials.iot {
+	requires java.base;
+}
+
+// java.desktop ( java.awt, java.swing ) / java.sql ( java.sql, javax.sql 
+//  java.base 모듈에는 java.lang / java.math / java.util / java.io / java.net / java.time

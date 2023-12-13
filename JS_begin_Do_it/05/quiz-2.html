@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>연습문제 2</title>
+</head>
+<body>
+	<script>
+		// 변수 선언 및 prompt 통해 입력 받은 값 대입.
+		var num1 = parseInt(prompt("비교할 첫 번째 숫자: ")); // prompt로 입력받은 값을 Int형으로 형변환.
+		var num2 = parseInt(prompt("비교할 두 번째 숫자: ")); // parseInt = 분석-parse 하여 정수-integer 로 변환.
+
+
+		// 함수 실행 및 num1, num2 인수로 전달.
+		compareNum(num1, num2); // 코드는 함수보다 앞에 와도 괜찮음 - 위치 무관함.
+
+		// 매개변수 a, b에 대한 조건문 및 alert() 함수 통한 알림창 호출
+		function compareNum(a, b) {
+			if (a < b) {
+				alert(b + " 가 " + a + " 보다 큽니다.");
+			}
+			else if (a > b) {
+				alert(a + " 가 " + b + " 보다 큽니다.");	
+			}
+
+			// 조건문은 if부터 순차적으로 검토하고, 맞는 조건을 수행하면 제어문을 빠져나옴.
+			// 따라서 가능성이 적은 쪽을 else로. - 두 수가 같을 경우.
+			else {
+				alert(a + " 와 " + b + " 은(는) 같습니다.");
+			}
+		};
+
+	</script>
+</body>
+</html>

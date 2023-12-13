@@ -1,0 +1,12 @@
+public class OkJavaGoInHome {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// Elevator Call
+			// org.opentutorials.iot.Elevator myElevator = new org.opentutorials.iot.Elevator("JAVA APT 507");
+				// myElevator 인스턴스 생성.
+		// 코드가 길어지므로 Elevator.java 삽입 후 인스턴스 생성
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+// Must declared package because this compilation unit is associated to the named module "Program" 오류
+// ./src 경로에 Program.java 생성 후 패키지 이름을 인식하지 못함.
+// 해결방법: 설정 - 실행 환경 JRE를 "JAVE SE-1.8" 로 설정 -JDK 8
+// 향후 원인에 대해 천천히 분석 해 보자.
+
+public class Program {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(1);
+		System.out.println(2);
+		System.out.println(3);
+		
+		// 순차적으로 1, 2, 3 이 출력되는 프로그램이다.
+	}
+
+}
